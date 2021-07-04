@@ -1,26 +1,13 @@
-import { GetStaticProps } from 'next';
-import React from 'react';
-import {
-  /*  AboutPage, */ AboutPageProps,
-  getAboutPageData,
-} from '../modules/about';
-import AboutPage from '../modules/about/AboutPage';
+import { AboutPage, getAboutPageData } from '../modules/about';
+// import AboutPage from '../modules/about/AboutPage';
 
-const AboutPro = (props: AboutPageProps) => {
+const AboutPro = (props) => {
   return <AboutPage {...props} />;
 };
 
-export const getStaticProps: GetStaticProps<AboutPageProps> = async (
-  context
-) => {
-  console.log(`fdsfdfs`);
-  const aboutPageData = await getAboutPageData('aboutPagePro');
-
-  if (!aboutPageData) {
-    return { notFound: true };
-  }
-
-  return { props: aboutPageData };
+export const getStaticProps = () => {
+  const data = getAboutPageData();
+  return { props: {} };
 };
 
 export default AboutPro;
